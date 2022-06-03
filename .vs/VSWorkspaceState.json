@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UniversityInfo",
+    "\\UniversityInfo\\UniversityInfo"
   ],
+  "SelectedNode": "\\UniversityInfo\\UniversityInfo\\MainWindow.xaml",
   "PreviewInSolutionExplorer": false
 }

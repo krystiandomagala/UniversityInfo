@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UniversityInfo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="900"
-        WindowStyle="None"
-        ResizeMode="NoResize">
-    <Grid>
+        Title="UniversityInfo" Height="700" Width="1000"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="CanMinimize"
+        FontSize="14">
+    <Grid Background="White">
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
@@ -21,7 +22,7 @@
 
         <Grid Background="#7CBD40" 
               Grid.ColumnSpan="2"
-              MouseDown="Grid_MouseDown">
+              >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
@@ -35,156 +36,67 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="🎓 UNIVERSITY INFO"
+            <Button Content="🎓 UNIVERSITY INFO" 
+                       x:Name="HomeBtn" Cursor="Hand"
                        Foreground="White"
                        VerticalAlignment="Center"
                        FontSize="14"
-                       FontWeight="Bold" Grid.ColumnSpan="2"  Grid.Column="1" HorizontalAlignment="Left"/>
-            <TextBlock Text="Students"
+                       FontWeight="Bold" Grid.ColumnSpan="2"  Grid.Column="1" HorizontalAlignment="Left" Click="HomeBtn_Click"/>
+            <Button    x:Name="StudentsBtn"
+                       Content="Students"
                        Foreground="White"
                        Grid.Column="3"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
-            <TextBlock Text="Employees"
+                       Cursor="Hand" Click="StudentsBtn_Click"/>
+            <Button Content="Employees"
+                    x:Name="EmployeesBtn"
                        Foreground="White"
                        Grid.Column="4"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
-            <TextBlock Text="Modules"
+                       Cursor="Hand" Click="EmployeesBtn_Click"/>
+            <Button Content="Modules"
+                    x:Name="ModulesBtn"
                        Foreground="White"
                        Grid.Column="5"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
-            <TextBlock Text="Positions"
+                       Cursor="Hand" Click="ModulesBtn_Click"/>
+            <Button Content="Positions"
+                    x:Name="PositionsBtn"
                        Foreground="White"
                        Grid.Column="6"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
-            <TextBlock Text="Grades"
+                       Cursor="Hand" Click="PositionsBtn_Click"/>
+            <Button Content="Grades"
+                    x:Name="GradesBtn"
                        Foreground="White"
                        Grid.Column="7"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
-            <TextBlock Text="Groups"
+                       Cursor="Hand" Click="GradesBtn_Click"/>
+            <Button Content="Groups"
+                    x:Name="GroupsBtn"
                        Foreground="White"
                        Grid.Column="8"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand"/>
+                       Cursor="Hand" Click="GroupsBtn_Click"/>
         </Grid>
 
-        <StackPanel Grid.Row="1"
-                    VerticalAlignment="Center"
-                    Margin="60,0,0,0">
-            <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="🎓University info"
-                           Foreground="#454647"
-                           FontSize="24"
-                           FontWeight="Medium"
-                           VerticalAlignment="Center"></TextBlock>
-                </StackPanel>
-                <TextBlock Text="Zarządzanie"
-                       Foreground="#7CBD40"
-                       FontSize="42"
-                       FontWeight="Medium"/>
-                <TextBlock Text="bazą danych uczelni"
-                       Foreground="#7CBD40"
-                       FontWeight="Medium"
-                       FontSize="42"/>
-                <TextBlock Text="Aplikacja ułatwiająca obsługę bazy danych SQL uczelni"
-                       Foreground="#898a8b"
-                       TextWrapping="Wrap"
-                       FontWeight="Medium"
-                       FontSize="14"
-                       Margin="0,10,0,0
-                           "/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Start"
-                        Foreground="White"
-                        FontSize="14"
-                        FontWeight="Medium"
-                        Margin="0,15,0,0">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Setter Property="Background" Value="#7CBD40"/>
-                            <Setter Property="Cursor" Value="Hand"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#5A9B20"></Setter>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.Template>
-                        <ControlTemplate TargetType="Button">
-                            <Border Width="100" Height="30"
-                                    CornerRadius="5"
-                                    Background="{TemplateBinding Background}">
-                                <ContentPresenter VerticalAlignment="Center"
-                                                HorizontalAlignment="Center"></ContentPresenter>
-                            </Border>
-                        </ControlTemplate>
-                    </Button.Template>
-                </Button>
-            </StackPanel>
-        </StackPanel>
-        <Grid Grid.Column="1"
-              Grid.RowSpan="2"
-              Margin="125,-335,-610,85"
-              Panel.ZIndex="-1">
-            <Grid.RenderTransform>
-                <RotateTransform Angle="50"></RotateTransform>
-            </Grid.RenderTransform>
-            <StackPanel Orientation="Horizontal"
-                        Margin="-375,275,-255,-250">
-                <StackPanel>
-                    <Border Width="700"
-                            Height="35"
-                            Background="#a8e86d"
-                            Margin="150,0,0,0"
-                            CornerRadius="20"></Border>
+        <Grid x:Name="GRID_CONTAINER" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="-1">
 
-                    <Border Width="700"
-                            Height="35"
-                            Background="#85b35d"
-                            Margin="0,15,0,0"
-                            CornerRadius="20"></Border>
+            <local:Home Visibility="Visible" x:Name="Home"></local:Home>
+            <local:Students Visibility="Collapsed" x:Name="Students"></local:Students>
+            <local:Employees Visibility="Collapsed" x:Name="Employees"></local:Employees>
+            <local:Modules Visibility="Collapsed" x:Name="Modules"></local:Modules>
+            <local:Positions Visibility="Collapsed" x:Name="Positions"></local:Positions>
+            <local:Grades Visibility="Collapsed" x:Name="Grades"></local:Grades>
+            <local:Groups Visibility="Collapsed" x:Name="Groups"></local:Groups>
 
-                    <Border Width="700"
-                            Height="35"
-                            Background="#97fc3d"
-                            Margin="75,15,0,0"
-                            CornerRadius="20"></Border>
-                </StackPanel>
-
-                <StackPanel>
-                    <Border Width="700"
-                            Height="35"
-                            Background="#a8e86d"
-                            Margin="150,0,0,0"
-                            CornerRadius="20"></Border>
-
-                    <Border Width="700"
-                            Height="35"
-                            Background="#85b35d"
-                            Margin="0,15,0,0"
-                            CornerRadius="20"></Border>
-
-                    <Border Width="700"
-                            Height="35"
-                            Background="#97fc3d"
-                            Margin="75,15,0,0"
-                            CornerRadius="20"></Border>
-                </StackPanel>
-                
-            </StackPanel>
         </Grid>
+
     </Grid>
 </Window>

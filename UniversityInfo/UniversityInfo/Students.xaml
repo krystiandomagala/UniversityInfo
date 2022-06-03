@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="UniversityInfo.Students"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UniversityInfo"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="1000" Margin="20">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="Students"
+                       FontSize="32"
+                       FontWeight="DemiBold"
+                       Foreground="#454647"></TextBlock>
+                <TextBlock Text="Aby wyszukać, edytować lub usunąć"
+                       Foreground="#454647"
+                       Margin="0,12,0,0"></TextBlock>
+                <TextBlock Text="konkretnego studenta wprowadź jego ID"
+                       Foreground="#454647"></TextBlock>
+            </StackPanel>
+            
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="ID"></Label>
+                <TextBox x:Name="StudentsID" Width="100"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Name"></Label>
+                <TextBox x:Name="StudentsName" Width="180"></TextBox>
+            </StackPanel>
+            
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Surname"></Label>
+                <TextBox x:Name="StudentsSurname" Width="180"></TextBox>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Birth date"></Label>
+                <DatePicker x:Name="StudentsBirthDate" Width="180"></DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Group"></Label>
+                <ComboBox x:Name="StudentsGroup" Width="180">
+                    <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
+                    <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
+                    <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+                <Grid HorizontalAlignment="Left" Margin="0,12,0,0">
+                    
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                    <Button Background="#7CBD40" Grid.Column="0" Grid.Row="0"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,15">SZUKAJ</Button>
+                <Button Background="#4090BD" Grid.Column="1" Grid.Row="0"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,15">DODAJ</Button>
+                <Button Background="#FFE381" Grid.Column="0" Grid.Row="1"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,0">EDYTUJ</Button>
+                <Button Background="#ED7969" Grid.Column="1" Grid.Row="1"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,0">USUŃ</Button>
+                </Grid>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid Name="StudentsTable"></DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>
