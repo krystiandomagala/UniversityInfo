@@ -40,4 +40,9 @@ C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Deb
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Groups.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Modules.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Positions.baml
+C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\UniversityInfo_Content.g.cs
+C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\bin\Debug\EntityFramework.dll
+C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\bin\Debug\EntityFramework.xml
+C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\UniversityInfo.csprojAssemblyReference.cache

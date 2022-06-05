@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UniversityInfo"
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="1000" Margin="20">
     <Grid Background="White">
@@ -29,36 +30,55 @@
                        Foreground="#454647"></TextBlock>
             </StackPanel>
             
-            <StackPanel Margin="0,0,0,12">
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="StudentsIDInputValidation">
                 <Label Content="ID"></Label>
                 <TextBox x:Name="StudentsID" Width="100"></TextBox>
             </StackPanel>
 
-            <StackPanel Margin="0,0,0,12">
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="StudentsNameInputValidation">
                 <Label Content="Name"></Label>
                 <TextBox x:Name="StudentsName" Width="180"></TextBox>
             </StackPanel>
             
-            <StackPanel Margin="0,0,0,12">
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="StudentsNameInputValidation">
                 <Label Content="Surname"></Label>
                 <TextBox x:Name="StudentsSurname" Width="180"></TextBox>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,12">
                 <Label Content="Birth date"></Label>
-                <DatePicker x:Name="StudentsBirthDate" Width="180"></DatePicker>
+                <DatePicker x:Name="StudentsBirthDate" Width="180" DisplayDateEnd="{x:Static sys:DateTime.Today}"></DatePicker>
             </StackPanel>
 
             <StackPanel Margin="0,0,0,12">
                 <Label Content="Group"></Label>
                 <ComboBox x:Name="StudentsGroup" Width="180">
-                    <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
-                    <ComboBoxItem>ComboBox Item #2</ComboBoxItem>
-                    <ComboBoxItem>ComboBox Item #3</ComboBoxItem>
+                    <ComboBoxItem>DMIe1011</ComboBoxItem>
+                    <ComboBoxItem>DMIe1013</ComboBoxItem>
+                    <ComboBoxItem>DMIe1014</ComboBoxItem>
+                    <ComboBoxItem>DMza3011</ComboBoxItem>
+                    <ComboBoxItem>DmZa3012</ComboBoxItem>
+                    <ComboBoxItem>DMza3013</ComboBoxItem>
+                    <ComboBoxItem>Dtie1002</ComboBoxItem>
+                    <ComboBoxItem>DwZa3014</ComboBoxItem>
+                    <ComboBoxItem>DZIe1001</ComboBoxItem>
+                    <ComboBoxItem>DZIe1003</ComboBoxItem>
+                    <ComboBoxItem>DZie1004</ComboBoxItem>
+                    <ComboBoxItem>DZZa3001</ComboBoxItem>
+                    <ComboBoxItem>DZza3002</ComboBoxItem>
+                    <ComboBoxItem>DZZa3003</ComboBoxItem>
+                    <ComboBoxItem>ZMie2011</ComboBoxItem>
+                    <ComboBoxItem>ZMIe2012</ComboBoxItem>
+                    <ComboBoxItem>ZMIe2014</ComboBoxItem>
+                    <ComboBoxItem>ZSIe2001</ComboBoxItem>
+                    <ComboBoxItem>ZTIe2013</ComboBoxItem>
+                    <ComboBoxItem>ZZIe2002</ComboBoxItem>
+                    <ComboBoxItem>ZZie2003</ComboBoxItem>
+                    <ComboBoxItem>ZZIe2004</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
 
-                <Grid HorizontalAlignment="Left" Margin="0,12,0,0">
+                <Grid HorizontalAlignment="Left" Margin="0,75,0,0">
                     
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -75,35 +95,40 @@
                         FontWeight="DemiBold"
                         Foreground="White"
                         BorderThickness="0"
-                        Margin="0,0,15,15">SZUKAJ</Button>
+                        Margin="0,0,15,15" 
+                        Click="ReadStudents"
+                        Cursor="Hand">SZUKAJ</Button>
                 <Button Background="#4090BD" Grid.Column="1" Grid.Row="0"
                         Width="140"
+                            Cursor="Hand"
                         Height="40"
                         FontSize="16"
                         FontWeight="DemiBold"
                         Foreground="White"
                         BorderThickness="0"
-                        Margin="0,0,0,15">DODAJ</Button>
+                        Margin="0,0,0,15" Click="InsertStudent">DODAJ</Button>
                 <Button Background="#FFE381" Grid.Column="0" Grid.Row="1"
                         Width="140"
+                            Cursor="Hand"
                         Height="40"
                         FontSize="16"
                         FontWeight="DemiBold"
                         Foreground="White"
                         BorderThickness="0"
-                        Margin="0,0,15,0">EDYTUJ</Button>
+                        Margin="0,0,15,0" Click="UpdateStudent">EDYTUJ</Button>
                 <Button Background="#ED7969" Grid.Column="1" Grid.Row="1"
                         Width="140"
                         Height="40"
+                        Cursor="Hand"
                         FontSize="16"
                         FontWeight="DemiBold"
                         Foreground="White"
                         BorderThickness="0"
-                        Margin="0,0,0,0">USUŃ</Button>
+                        Margin="0,0,0,0" VerticalAlignment="Bottom" Click="DeleteStudent">USUŃ</Button>
                 </Grid>
         </StackPanel>
         <Grid Grid.Column="1" Grid.ColumnSpan="2">
-            <DataGrid Name="StudentsTable"></DataGrid>
+            <DataGrid Name="StudentsTable" IsReadOnly="True"></DataGrid>
         </Grid>
     </Grid>
 </UserControl>

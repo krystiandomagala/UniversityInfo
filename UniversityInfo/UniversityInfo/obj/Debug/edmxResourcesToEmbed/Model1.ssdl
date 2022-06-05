@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="universityModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="acad_positions">
+    <Key>
+      <PropertyRef Name="acad_position" />
+    </Key>
+    <Property Name="acad_position" Type="varchar" MaxLength="40" Nullable="false" />
+    <Property Name="overtime_rate" Type="smallmoney" Nullable="false" />
+  </EntityType>
+  <EntityType Name="departments">
+    <Key>
+      <PropertyRef Name="department" />
+    </Key>
+    <Property Name="department" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="employment_date" Type="date" />
+    <Property Name="PESEL" Type="char" MaxLength="11" />
+  </EntityType>
+  <EntityType Name="grades">
+    <Key>
+      <PropertyRef Name="grade" />
+    </Key>
+    <Property Name="grade" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="groups">
+    <Key>
+      <PropertyRef Name="group_no" />
+    </Key>
+    <Property Name="group_no" Type="char" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="lecturers">
+    <Key>
+      <PropertyRef Name="lecturer_id" />
+    </Key>
+    <Property Name="lecturer_id" Type="int" Nullable="false" />
+    <Property Name="acad_position" Type="varchar" MaxLength="40" />
+    <Property Name="department" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="modules">
+    <Key>
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="module_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="module_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="no_of_hours" Type="tinyint" Nullable="false" />
+    <Property Name="lecturer_id" Type="int" />
+    <Property Name="preceding_module" Type="int" />
+    <Property Name="department" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="student_grades">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="module_id" />
+      <PropertyRef Name="exam_date" />
+    </Key>
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="module_id" Type="int" Nullable="false" />
+    <Property Name="exam_date" Type="date" Nullable="false" />
+    <Property Name="grade" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="students">
+    <Key>
+      <PropertyRef Name="student_id" />
+    </Key>
+    <Property Name="student_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="25" />
+    <Property Name="date_of_birth" Type="date" />
+    <Property Name="group_no" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="students_modules">
+    <Key>
+      <PropertyRef Name="student_id" />
+      <PropertyRef Name="module_id" />
+    </Key>
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="module_id" Type="int" Nullable="false" />
+    <Property Name="planned_exam_date" Type="date" />
+  </EntityType>
+  <EntityType Name="tuition_fees">
+    <Key>
+      <PropertyRef Name="payment_id" />
+    </Key>
+    <Property Name="payment_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="student_id" Type="int" Nullable="false" />
+    <Property Name="fee_amount" Type="smallmoney" Nullable="false" />
+    <Property Name="date_of_payment" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__lecturers__acad___145C0A3F">
+    <End Role="acad_positions" Type="Self.acad_positions" Multiplicity="0..1" />
+    <End Role="lecturers" Type="Self.lecturers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="acad_positions">
+        <PropertyRef Name="acad_position" />
+      </Principal>
+      <Dependent Role="lecturers">
+        <PropertyRef Name="acad_position" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lecturers__depar__164452B1">
+    <End Role="departments" Type="Self.departments" Multiplicity="1" />
+    <End Role="lecturers" Type="Self.lecturers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="department" />
+      </Principal>
+      <Dependent Role="lecturers">
+        <PropertyRef Name="department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__lecturers__lectu__15502E78">
+    <End Role="employees" Type="Self.employees" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="lecturers" Type="Self.lecturers" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="employees">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="lecturers">
+        <PropertyRef Name="lecturer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__modules__departm__2A4B4B5E">
+    <End Role="departments" Type="Self.departments" Multiplicity="1" />
+    <End Role="modules" Type="Self.modules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="departments">
+        <PropertyRef Name="department" />
+      </Principal>
+      <Dependent Role="modules">
+        <PropertyRef Name="department" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__modules__lecture__29572725">
+    <End Role="lecturers" Type="Self.lecturers" Multiplicity="0..1" />
+    <End Role="modules" Type="Self.modules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="lecturers">
+        <PropertyRef Name="lecturer_id" />
+      </Principal>
+      <Dependent Role="modules">
+        <PropertyRef Name="lecturer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__modules__precedi__286302EC">
+    <End Role="modules" Type="Self.modules" Multiplicity="0..1" />
+    <End Role="modules1" Type="Self.modules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modules">
+        <PropertyRef Name="module_id" />
+      </Principal>
+      <Dependent Role="modules1">
+        <PropertyRef Name="preceding_module" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__student_g__grade__36B12243">
+    <End Role="grades" Type="Self.grades" Multiplicity="1" />
+    <End Role="student_grades" Type="Self.student_grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grades">
+        <PropertyRef Name="grade" />
+      </Principal>
+      <Dependent Role="student_grades">
+        <PropertyRef Name="grade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__student_grades__35BCFE0A">
+    <End Role="students_modules" Type="Self.students_modules" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="student_grades" Type="Self.student_grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students_modules">
+        <PropertyRef Name="student_id" />
+        <PropertyRef Name="module_id" />
+      </Principal>
+      <Dependent Role="student_grades">
+        <PropertyRef Name="student_id" />
+        <PropertyRef Name="module_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students___modul__300424B4">
+    <End Role="modules" Type="Self.modules" Multiplicity="1" />
+    <End Role="students_modules" Type="Self.students_modules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="modules">
+        <PropertyRef Name="module_id" />
+      </Principal>
+      <Dependent Role="students_modules">
+        <PropertyRef Name="module_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students___stude__30F848ED">
+    <End Role="students" Type="Self.students" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="students_modules" Type="Self.students_modules" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="students_modules">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__students__group___1B0907CE">
+    <End Role="groups" Type="Self.groups" Multiplicity="0..1" />
+    <End Role="students" Type="Self.students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groups">
+        <PropertyRef Name="group_no" />
+      </Principal>
+      <Dependent Role="students">
+        <PropertyRef Name="group_no" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="rtfs">
+    <End Role="students" Type="Self.students" Multiplicity="1" />
+    <End Role="tuition_fees" Type="Self.tuition_fees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="students">
+        <PropertyRef Name="student_id" />
+      </Principal>
+      <Dependent Role="tuition_fees">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="universityModelStoreContainer">
+    <EntitySet Name="acad_positions" EntityType="Self.acad_positions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="departments" EntityType="Self.departments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="grades" EntityType="Self.grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="groups" EntityType="Self.groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="lecturers" EntityType="Self.lecturers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="modules" EntityType="Self.modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="student_grades" EntityType="Self.student_grades" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="students_modules" EntityType="Self.students_modules" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tuition_fees" EntityType="Self.tuition_fees" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__lecturers__acad___145C0A3F" Association="Self.FK__lecturers__acad___145C0A3F">
+      <End Role="acad_positions" EntitySet="acad_positions" />
+      <End Role="lecturers" EntitySet="lecturers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lecturers__depar__164452B1" Association="Self.FK__lecturers__depar__164452B1">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="lecturers" EntitySet="lecturers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__lecturers__lectu__15502E78" Association="Self.FK__lecturers__lectu__15502E78">
+      <End Role="employees" EntitySet="employees" />
+      <End Role="lecturers" EntitySet="lecturers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__modules__departm__2A4B4B5E" Association="Self.FK__modules__departm__2A4B4B5E">
+      <End Role="departments" EntitySet="departments" />
+      <End Role="modules" EntitySet="modules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__modules__lecture__29572725" Association="Self.FK__modules__lecture__29572725">
+      <End Role="lecturers" EntitySet="lecturers" />
+      <End Role="modules" EntitySet="modules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__modules__precedi__286302EC" Association="Self.FK__modules__precedi__286302EC">
+      <End Role="modules" EntitySet="modules" />
+      <End Role="modules1" EntitySet="modules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__student_g__grade__36B12243" Association="Self.FK__student_g__grade__36B12243">
+      <End Role="grades" EntitySet="grades" />
+      <End Role="student_grades" EntitySet="student_grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__student_grades__35BCFE0A" Association="Self.FK__student_grades__35BCFE0A">
+      <End Role="students_modules" EntitySet="students_modules" />
+      <End Role="student_grades" EntitySet="student_grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students___modul__300424B4" Association="Self.FK__students___modul__300424B4">
+      <End Role="modules" EntitySet="modules" />
+      <End Role="students_modules" EntitySet="students_modules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students___stude__30F848ED" Association="Self.FK__students___stude__30F848ED">
+      <End Role="students" EntitySet="students" />
+      <End Role="students_modules" EntitySet="students_modules" />
+    </AssociationSet>
+    <AssociationSet Name="FK__students__group___1B0907CE" Association="Self.FK__students__group___1B0907CE">
+      <End Role="groups" EntitySet="groups" />
+      <End Role="students" EntitySet="students" />
+    </AssociationSet>
+    <AssociationSet Name="rtfs" Association="Self.rtfs">
+      <End Role="students" EntitySet="students" />
+      <End Role="tuition_fees" EntitySet="tuition_fees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
