@@ -13,6 +13,8 @@ Aplikacja ułatwiająca pracownikom uczelni dostęp do informacji o placówce. A
 - Edycja danych odbywa się poprzez wpisanie danych i wyborem `ID` studenta który jest edytowany, oraz wciśnięcie przycisku `EDYTUJ`
 - Usuwanie danych odbywa się przez wybranie `ID` usuwanego rekordu oraz naciśnięcie przycisku `USUŃ`
 
+**Niektóre opcje dla poszczególnych widoków są wyłączone, ponieważ nie są przewidziane dla użytkowników programu**
+
 Aplikacja posiada instaler `setup.exe`.
 
 ### Wykorzystane technologie
