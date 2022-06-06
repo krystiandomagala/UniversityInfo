@@ -1,39 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace UniversityInfo
+﻿namespace UniversityInfo
 {
+    using System.Data;
+    using System.Data.SqlClient;
+    using System.Text.RegularExpressions;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
     /// <summary>
-    /// Logika interakcji dla klasy Students.xaml
+    /// Logika interakcji dla klasy Students.xaml.
     /// </summary>
     public partial class Students : UserControl
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Students"/> class.
+        /// </summary>
         public Students()
         {
             InitializeComponent();
             LoadGrid();
         }
-
-        SqlConnection conn = new SqlConnection(@"Data Source=K-KRYSTIAN\SQLEXPRESS;Initial Catalog=university;Integrated Security=True");
-
-
-
-
+        /// <summary>
+        /// Defines the conn.
+        /// </summary>
+        internal SqlConnection conn = new SqlConnection(@"Data Source=K-KRYSTIAN\SQLEXPRESS;Initial Catalog=university;Integrated Security=True");
+        /// <summary>
+        /// The LoadGrid.
+        /// </summary>
         public void LoadGrid()
         {
             SqlCommand command = new SqlCommand("SELECT * FROM students", conn);
@@ -44,6 +37,11 @@ namespace UniversityInfo
             conn.Close();
             StudentsTable.ItemsSource = dataTable.DefaultView;
         }
+        /// <summary>
+        /// The InsertStudent.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="RoutedEventArgs"/>.</param>
         private void InsertStudent(object sender, RoutedEventArgs e)
         {
             try
@@ -68,8 +66,12 @@ namespace UniversityInfo
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
+        /// <summary>
+        /// The ReadStudents.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="RoutedEventArgs"/>.</param>
         private void ReadStudents(object sender, RoutedEventArgs e)
         {
             SqlCommand command = new SqlCommand($"SELECT * FROM students WHERE student_id like '{StudentsID.Text}'", conn);
@@ -85,6 +87,11 @@ namespace UniversityInfo
             StudentsTable.ItemsSource = dataTable.DefaultView;
             ClearData();
         }
+        /// <summary>
+        /// The DeleteStudent.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="RoutedEventArgs"/>.</param>
         private void DeleteStudent(object sender, RoutedEventArgs e)
         {
             conn.Open();
@@ -101,7 +108,7 @@ namespace UniversityInfo
                     conn.Close();
                 }
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show("Not deleted: " + ex.Message);
             }
@@ -110,6 +117,11 @@ namespace UniversityInfo
                 conn.Close();
             }
         }
+        /// <summary>
+        /// The UpdateStudent.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="RoutedEventArgs"/>.</param>
         private void UpdateStudent(object sender, RoutedEventArgs e)
         {
             conn.Open();
@@ -125,7 +137,7 @@ namespace UniversityInfo
                 command.ExecuteNonQuery();
                 MessageBox.Show("Record has been updated successfully", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-            catch(SqlException ex)
+            catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -136,32 +148,47 @@ namespace UniversityInfo
                 LoadGrid();
             }
         }
+        /// <summary>
+        /// The isValid.
+        /// </summary>
+        /// <returns>The <see cref="bool"/>.</returns>
         public bool isValid()
         {
-            if(StudentsSurname.Text == string.Empty)
+            if (StudentsSurname.Text == string.Empty)
             {
                 MessageBox.Show("Surname is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             return true;
         }
+        /// <summary>
+        /// The ClearData.
+        /// </summary>
         public void ClearData()
         {
             StudentsID.Clear();
             StudentsName.Clear();
             StudentsSurname.Clear();
         }
+        /// <summary>
+        /// The StudentsIDInputValidation.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="TextCompositionEventArgs"/>.</param>
         private void StudentsIDInputValidation(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
         }
+        /// <summary>
+        /// The StudentsNameInputValidation.
+        /// </summary>
+        /// <param name="sender">The sender<see cref="object"/>.</param>
+        /// <param name="e">The e<see cref="TextCompositionEventArgs"/>.</param>
         private void StudentsNameInputValidation(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^A-Za-zZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð]+");
             e.Handled = regex.IsMatch(e.Text);
         }
-
-
     }
 }

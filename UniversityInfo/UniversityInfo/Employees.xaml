@@ -5,9 +5,102 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UniversityInfo"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Employees" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+             d:DesignHeight="700" d:DesignWidth="1000"  Margin="20">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="Employees"
+                       FontSize="32"
+                       FontWeight="DemiBold"
+                       Foreground="#454647"></TextBlock>
+                <TextBlock Text="Aby wyszukać, edytować lub usunąć"
+                       Foreground="#454647"
+                       Margin="0,12,0,0"></TextBlock>
+                <TextBlock Text="konkretnego pracownika wprowadź jego ID"
+                       Foreground="#454647"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="EmployeesIDValidation">
+                <Label Content="ID"></Label>
+                <TextBox x:Name="EmployeesID" Width="100"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="EmployeesNameValidation">
+                <Label Content="Name"></Label>
+                <TextBox x:Name="EmployeesName" Width="180"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="EmployeesNameValidation">
+                <Label Content="Surname"></Label>
+                <TextBox x:Name="EmployeesSurname" Width="180"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Employment date"></Label>
+                <DatePicker x:Name="EmployeesEmploymentDate" Width="180"></DatePicker>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="EmployeesPESELValidation">
+                <Label Content="PESEL"></Label>
+                <TextBox x:Name="EmployeesPESEL" Width="180" MaxLength="9"></TextBox>
+            </StackPanel>
+           
+            <Grid HorizontalAlignment="Left" Margin="0,75,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Background="#7CBD40" Grid.Column="0" Grid.Row="0"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,15" 
+                        Cursor="Hand" Click="ReadEmployees">SZUKAJ</Button>
+                <Button Background="#4090BD" Grid.Column="1" Grid.Row="0"
+                        Width="140"
+                            Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,15" Click="InsertEmployee">DODAJ</Button>
+                <Button Background="#FFE381" Grid.Column="0" Grid.Row="1"
+                        Width="140"
+                            Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,0" Click="UpdateEmployee">EDYTUJ</Button>
+                <Button Background="#ED7969" Grid.Column="1" Grid.Row="1"
+                        Width="140"
+                        Height="40"
+                        Cursor="Hand"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,0,0" VerticalAlignment="Bottom" Click="DeleteEmployee">USUŃ</Button>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid Name="StudentsTable" IsReadOnly="True"></DataGrid>
+        </Grid>
     </Grid>
+
 </UserControl>

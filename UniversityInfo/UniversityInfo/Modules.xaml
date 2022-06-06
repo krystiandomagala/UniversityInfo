@@ -5,8 +5,145 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UniversityInfo"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Modules" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+             d:DesignHeight="700" d:DesignWidth="1000" Margin="20">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="Modules"
+                       FontSize="32"
+                       FontWeight="DemiBold"
+                       Foreground="#454647"></TextBlock>
+                <TextBlock Text="Aby wyszukać, edytować lub usunąć"
+                       Foreground="#454647"
+                       Margin="0,12,0,0"></TextBlock>
+                <TextBlock Text="konkretny moduł wprowadź jego ID"
+                       Foreground="#454647"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="ModulesIDValidation">
+                <Label Content="ID"></Label>
+                <TextBox x:Name="ModulesID" Width="100"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Module name"></Label>
+                <ComboBox x:Name="ModulesName" Width="180">
+                    <ComboBoxItem>Economics</ComboBoxItem>
+                    <ComboBoxItem>Information Technology</ComboBoxItem>
+                    <ComboBoxItem>Operational systems</ComboBoxItem>
+                    <ComboBoxItem>Mathematics</ComboBoxItem>
+                    <ComboBoxItem>Statistics</ComboBoxItem>
+                    <ComboBoxItem>Ancient history</ComboBoxItem>
+                    <ComboBoxItem>Geography</ComboBoxItem>
+                    <ComboBoxItem>Advanced Statistics</ComboBoxItem>
+                    <ComboBoxItem>Econometrics</ComboBoxItem>
+                    <ComboBoxItem>Computer programming</ComboBoxItem>
+                    <ComboBoxItem>Databases</ComboBoxItem>
+                    <ComboBoxItem>Mathematics II</ComboBoxItem>
+                    <ComboBoxItem>Theory of probability</ComboBoxItem>
+                    <ComboBoxItem>Contemporary history</ComboBoxItem>
+                    <ComboBoxItem>Advanced databases</ComboBoxItem>
+                    <ComboBoxItem>Computer networks</ComboBoxItem>
+                    <ComboBoxItem>Foreign language</ComboBoxItem>
+                    <ComboBoxItem>Web applications</ComboBoxItem>
+                    <ComboBoxItem>Management</ComboBoxItem>
+                    <ComboBoxItem>Computer programming II</ComboBoxItem>
+                    <ComboBoxItem>Computer network devices</ComboBoxItem>
+                    <ComboBoxItem>Economics II</ComboBoxItem>
+                    <ComboBoxItem>Macroeconomics</ComboBoxItem>
+                    <ComboBoxItem>Microeceonomics</ComboBoxItem>
+                    <ComboBoxItem>Windows server</ComboBoxItem>
+                    <ComboBoxItem>Windows server services</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="ModulesIDValidation">
+                <Label Content="Number of hours"></Label>
+                <TextBox x:Name="ModulesNoOfHours" Width="180"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="ModulesIDValidation">
+                <Label Content="Lecturer ID"></Label>
+                <TextBox x:Name="ModulesLecturersID" Width="180"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="ModulesIDValidation">
+                <Label Content="Preceding module ID"></Label>
+                <TextBox x:Name="PrecedingModulesID" Width="100"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Department"></Label>
+                <ComboBox x:Name="ModulesDepartment" Width="180">
+                    <ComboBoxItem>Department of Economics</ComboBoxItem>
+                    <ComboBoxItem>Department of Foreign Affairs</ComboBoxItem>
+                    <ComboBoxItem>Department of Geography</ComboBoxItem>
+                    <ComboBoxItem>Department of History</ComboBoxItem>
+                    <ComboBoxItem>Department of Informatics</ComboBoxItem>
+                    <ComboBoxItem>Department of Management</ComboBoxItem>
+                    <ComboBoxItem>Department of Mathematics</ComboBoxItem>
+                    <ComboBoxItem>Department of Physics</ComboBoxItem>
+                    <ComboBoxItem>Department of Statistics</ComboBoxItem>
+                    <ComboBoxItem>Institute of Foreign Languages</ComboBoxItem>
+                    <ComboBoxItem>Institute of Teaching Methods</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            
+            
+            <Grid HorizontalAlignment="Left" Margin="0,17,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Background="#7CBD40" Grid.Column="0" Grid.Row="0"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,15" 
+                        Cursor="Hand" Click="ReadModules">SZUKAJ</Button>
+                <Button Background="LightGray" Grid.Column="1" Grid.Row="0" IsEnabled="False"
+                        Width="140"
+                            Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="Gray"
+                        BorderThickness="0"
+                        Margin="0,0,0,15">DODAJ</Button>
+                <Button Background="#FFE381" Grid.Column="0" Grid.Row="1"
+                        Width="140"
+                            Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,0" Click="UpdateModules">EDYTUJ</Button>
+                <Button Background="LightGray" Grid.Column="1" Grid.Row="1"
+                        Width="140"
+                        Height="40"
+                        Cursor="Hand"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="Gray"
+                        BorderThickness="0"
+                        Margin="0,0,0,0" VerticalAlignment="Bottom" IsEnabled="False">USUŃ</Button>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid Name="StudentsTable" IsReadOnly="True"></DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

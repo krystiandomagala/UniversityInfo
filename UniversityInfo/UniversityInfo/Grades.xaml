@@ -4,10 +4,110 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:UniversityInfo"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="Grades" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+             d:DesignHeight="700" d:DesignWidth="1000" Margin="20">
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
+        <StackPanel Grid.Column="0" Grid.Row="0">
+            <StackPanel Margin="0,0,0,12">
+                <TextBlock Text="Grades"
+                       FontSize="32"
+                       FontWeight="DemiBold"
+                       Foreground="#454647"></TextBlock>
+                <TextBlock Text="Aby wyszukać, edytować lub usunąć"
+                       Foreground="#454647"
+                       Margin="0,12,0,0"></TextBlock>
+                <TextBlock Text="konkretną ocenę wprowadź ID studenta i modułu"
+                       Foreground="#454647"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="IDValidation">
+                <Label Content="Student ID"></Label>
+                <TextBox x:Name="GradesStudentID" Width="100"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12" PreviewTextInput="IDValidation">
+                <Label Content="Module ID"></Label>
+                <TextBox x:Name="GradesModuleID" Width="100"></TextBox>
+            </StackPanel>
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Exam date"></Label>
+                <DatePicker x:Name="GradesExamDate" Width="180" DisplayDateEnd="{x:Static sys:DateTime.Now}"></DatePicker>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,12">
+                <Label Content="Grade"></Label>
+                <ComboBox x:Name="GradesGrade" Width="180">
+                    <ComboBoxItem>2.0</ComboBoxItem>
+                    <ComboBoxItem>3.0</ComboBoxItem>
+                    <ComboBoxItem>3.5</ComboBoxItem>
+                    <ComboBoxItem>4.0</ComboBoxItem>
+                    <ComboBoxItem>4.5</ComboBoxItem>
+                    <ComboBoxItem>5.0</ComboBoxItem>
+                    <ComboBoxItem>5.5</ComboBoxItem>
+                    <ComboBoxItem>6.0</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+            <Grid HorizontalAlignment="Left" Margin="0,133,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Background="#7CBD40" Grid.Column="0" Grid.Row="0"
+                        Width="140"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,15" 
+                        Click="ReadGrades"
+                        Cursor="Hand">SZUKAJ</Button>
+                <Button Background="LightGray" Grid.Column="1" Grid.Row="0"
+                        Width="140"
+                        Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="gray"
+                        BorderThickness="0"
+                        Margin="0,0,0,15" IsEnabled="False">DODAJ</Button>
+                <Button Background="#FFE381" Grid.Column="0" Grid.Row="1"
+                        Width="140"
+                            Cursor="Hand"
+                        Height="40"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="White"
+                        BorderThickness="0"
+                        Margin="0,0,15,0" Click="UpdateGrades">EDYTUJ</Button>
+                <Button Background="LightGray" Grid.Column="1" Grid.Row="1"
+                        Width="140"
+                        Height="40"
+                        Cursor="Hand"
+                        FontSize="16"
+                        FontWeight="DemiBold"
+                        Foreground="gray"
+                        BorderThickness="0"
+                        Margin="0,0,0,0" VerticalAlignment="Bottom" IsEnabled="False">USUŃ</Button>
+            </Grid>
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+            <DataGrid Name="StudentsTable" IsReadOnly="True"></DataGrid>
+        </Grid>
     </Grid>
 </UserControl>

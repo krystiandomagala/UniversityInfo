@@ -32,12 +32,10 @@ C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Deb
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Home.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Employees.g.cs
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Grades.g.cs
-C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Groups.g.cs
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Modules.g.cs
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Positions.g.cs
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Employees.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Grades.baml
-C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Groups.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Modules.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\Positions.baml
 C:\Users\kryst\source\repos\UniversityInfo\UniversityInfo\UniversityInfo\obj\Debug\UniversityInfo_Content.g.cs

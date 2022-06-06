@@ -41,49 +41,42 @@
                        Foreground="White"
                        VerticalAlignment="Center"
                        FontSize="14"
-                       FontWeight="Bold" Grid.ColumnSpan="2"  Grid.Column="1" HorizontalAlignment="Left" Click="HomeBtn_Click"/>
+                       FontWeight="Bold" Grid.ColumnSpan="3"  Grid.Column="1" HorizontalAlignment="Left" Click="HomeBtn_Click"/>
             <Button    x:Name="StudentsBtn"
                        Content="Students"
                        Foreground="White"
-                       Grid.Column="3"
+                       Grid.Column="4"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Cursor="Hand" Click="StudentsBtn_Click"/>
             <Button Content="Employees"
                     x:Name="EmployeesBtn"
                        Foreground="White"
-                       Grid.Column="4"
+                       Grid.Column="5"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Cursor="Hand" Click="EmployeesBtn_Click"/>
             <Button Content="Modules"
                     x:Name="ModulesBtn"
                        Foreground="White"
-                       Grid.Column="5"
+                       Grid.Column="6"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Cursor="Hand" Click="ModulesBtn_Click"/>
             <Button Content="Positions"
                     x:Name="PositionsBtn"
                        Foreground="White"
-                       Grid.Column="6"
+                       Grid.Column="7"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
                        Cursor="Hand" Click="PositionsBtn_Click"/>
             <Button Content="Grades"
                     x:Name="GradesBtn"
                        Foreground="White"
-                       Grid.Column="7"
-                       VerticalAlignment="Center"
-                       HorizontalAlignment="Center"
-                       Cursor="Hand" Click="GradesBtn_Click"/>
-            <Button Content="Groups"
-                    x:Name="GroupsBtn"
-                       Foreground="White"
                        Grid.Column="8"
                        VerticalAlignment="Center"
                        HorizontalAlignment="Center"
-                       Cursor="Hand" Click="GroupsBtn_Click"/>
+                       Cursor="Hand" Click="GradesBtn_Click"/>
         </Grid>
 
         <Grid x:Name="GRID_CONTAINER" Grid.Row="1" Grid.ColumnSpan="2" Panel.ZIndex="-1">
@@ -94,8 +87,6 @@
             <local:Modules Visibility="Collapsed" x:Name="Modules"></local:Modules>
             <local:Positions Visibility="Collapsed" x:Name="Positions"></local:Positions>
             <local:Grades Visibility="Collapsed" x:Name="Grades"></local:Grades>
-            <local:Groups Visibility="Collapsed" x:Name="Groups"></local:Groups>
-
         </Grid>
 
     </Grid>
